@@ -31,9 +31,37 @@
 
 We wanted a Minecraft launcher that gets out of your way. Install it, pick a version, and play. No account wall, no pile of bundled junk, and no mystery about where your worlds and settings end up.
 
-FireClient is a launcher and an in-game client in one. It handles the boring parts (Java, versions, mod loaders, updates) and gives you a clean in-game menu once you're in.
+FireClient is a launcher and an in-game client in one. It handles the boring parts (Java, versions, mod loaders, updates) and gives you a clean in-game menu once you're in. It's a Windows beta, so expect it to keep changing.
 
 It is **not open source**. This repo is the home for the README, the license and the release info. More on that [below](#license).
+
+## Screenshots
+
+**The launcher.** Home screen with your account, version, loader and memory, plus quick links and a live look at the FireClient Discord.
+
+<p align="center">
+  <a href="https://raw.githubusercontent.com/Fire-Client/Fireclient/main/screenshot-launcher-home.jpg"><img src="https://raw.githubusercontent.com/Fire-Client/Fireclient/main/screenshot-launcher-home.jpg" alt="Launcher home" width="860"></a>
+</p>
+
+**Mods.** Search Modrinth, install in one click, jump to your folders, or grab a curated pack.
+
+<p align="center">
+  <a href="https://raw.githubusercontent.com/Fire-Client/Fireclient/main/screenshot-launcher-mods.jpg"><img src="https://raw.githubusercontent.com/Fire-Client/Fireclient/main/screenshot-launcher-mods.jpg" alt="Launcher mods page" width="860"></a>
+</p>
+
+**The in-game menu.** The FireClient title screen, running on Minecraft 1.21.1 with Fabric.
+
+<p align="center">
+  <a href="https://raw.githubusercontent.com/Fire-Client/Fireclient/main/screenshot-ingame-menu.jpg"><img src="https://raw.githubusercontent.com/Fire-Client/Fireclient/main/screenshot-ingame-menu.jpg" alt="FireClient in-game title screen" width="860"></a>
+</p>
+
+**HUD settings.** Turn each HUD element on or off, then drag them where you want them.
+
+<p align="center">
+  <a href="https://raw.githubusercontent.com/Fire-Client/Fireclient/main/screenshot-ingame-hud.jpg"><img src="https://raw.githubusercontent.com/Fire-Client/Fireclient/main/screenshot-ingame-hud.jpg" alt="FireClient HUD settings" width="860"></a>
+</p>
+
+<sub>Click any screenshot to see it full size.</sub>
 
 ## Play your way: offline or online
 
@@ -48,21 +76,31 @@ Switching between them never touches your worlds, profiles or mods. They all liv
 ## What's in it
 
 **The launcher**
+- Home, Versions, Worlds, Servers, Screenshots, Accounts and Skins pages in one sidebar
 - Installs Minecraft versions and the right Java for each one
 - Separate profiles, each with its own version, mods, resource packs and worlds
 - Fabric, Forge and NeoForge
-- Checks for launcher, version and loader updates
+- A live console that shows install and launch progress, game output and errors as they happen
+- A Performance page and a Usage page
+- Host Server page for running a local server (PaperMC)
+- Live FireClient Discord member count, with join and copy-invite buttons
+- Favorite servers: star up to 10 on the Servers page and they show on Home
 - Discord Rich Presence if you want it (shows your version and server)
 
 **Mods, packs and shaders**
 - Search and install from Modrinth without leaving the launcher
+- Drag and drop `.jar` mod files to install them
+- Curated one-click packs: Performance, Visuals, Utility and PvP
+- Toggle or remove installed mods from the same page
+- Resource Packs and Shaders pages
 - Mod library scan that matches your installed mods to their Modrinth pages
-- PaperMC downloads for running a local server
+- Quick-access buttons for your instance, mods, screenshots, saves and shaders folders
 
-**In-game**
-- Fabric and Forge versions of the client mod
-- A custom title menu: an icon-button grid along the bottom instead of the vanilla menu
-- A HUD and client settings screen
+**In-game (Fabric, shown on 1.21.1)**
+- A custom FireClient title screen and FireClient Menu button
+- HUD elements you can switch on or off: watermark, FPS, ping, coordinates, direction, memory, clock, keystrokes, armor, effects and CPS
+- Edit HUD positions to put everything where you want it
+- Settings tabs for HUD, Features, Theme and About
 
 **Community (optional)**
 - Profile, friends, messages, server listings and marketplace
@@ -76,14 +114,12 @@ Switching between them never touches your worlds, profiles or mods. They all liv
 
 ## What we're working on next
 
-These are planned, not shipped. They'll land in future releases, and the [Releases](https://github.com/untitledinfo/fireclient-launcher/releases) page is where they'll show up first.
+These are planned, not shipped. The [Releases](https://github.com/untitledinfo/fireclient-launcher/releases) page is where they'll show up first.
 
 - More in-game HUD modules and layout options
-- Per-profile performance settings
 - Backup and restore for worlds, with one click
 - Import profiles from other launchers
-- Launcher themes beyond the default red
-- More Minecraft versions for both loaders
+- More Minecraft versions for the in-game client
 
 Got an idea? Drop it in the [Discord](https://discord.gg/jK74ZtrDFm).
 
