@@ -1,0 +1,66 @@
+FIRECLIENT PROPRIETARY LICENSE
+Version 1.0, effective October 9, 2026
+
+Copyright (c) 2026 FirePDX and Sajjad Ahmed. All rights reserved.
+
+FireClient is NOT open-source software. This repository and its contents
+are made available for information, documentation and download purposes
+only.
+
+1. GRANT OF USE
+   You are granted a limited, non-exclusive, non-transferable, revocable
+   license to download, install and use the official FireClient installer
+   and launcher for personal, non-commercial purposes.
+
+2. RESTRICTIONS
+   Except as expressly allowed by law or by written permission from the
+   copyright holders, you may NOT:
+   a) publish, sell, rent, sublicense or redistribute FireClient-authored
+      source code, binaries, artwork, logos or branding;
+   b) modify FireClient and distribute the modified or combined result;
+   c) reverse engineer, decompile or disassemble FireClient, except to the
+      extent such restriction is prohibited by applicable law;
+   d) remove or alter copyright, license or attribution notices;
+   e) use the FireClient name, logo or branding in a way that suggests
+      endorsement or that your work is the official FireClient.
+
+3. THIRD-PARTY AND UPSTREAM COMPONENTS
+   This project is based in part on Justice Launcher source. The upstream
+   source has no published license, and permission is required before
+   redistribution. This license does not claim ownership of upstream or
+   third-party work, does not grant permission from their authors, and
+   does not replace any license that applies to included components. Do
+   not redistribute a combined build unless you hold the rights and
+   permissions required for every component.
+
+4. TRADEMARKS
+   Minecraft, Microsoft, Mojang, Fabric, Forge, NeoForge, Modrinth,
+   PaperMC, Discord and other names and marks belong to their respective
+   owners. FireClient is independent and is not endorsed by Mojang or
+   Microsoft.
+
+5. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+   Back up important worlds before restoring or changing game files.
+
+6. LIMITATION OF LIABILITY
+   TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE AUTHORS SHALL NOT BE
+   LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE USE
+   OF, OR INABILITY TO USE, THE SOFTWARE.
+
+7. TERMINATION
+   This license terminates automatically if you breach any of its terms.
+   On termination you must stop using and delete all copies of the
+   software you obtained under this license.
+
+8. PRIVACY
+   Use of FireClient is also governed by the FireClient Terms & Privacy
+   notice shown in the installer and published at https://fireclient.net.
+
+9. CONTACT
+   Permission requests and support: FireClient community,
+   https://discord.gg/jK74ZtrDFm
+
+Created by FirePDX and Sajjad Ahmed.
