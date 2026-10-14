@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Fire-Client/Fireclient/main/assets/logo.png" alt="FireClient" width="140" height="140">
+  <img src="https://raw.githubusercontent.com/Fire-Client/Fireclient/main/logo.png" alt="FireClient" width="140" height="140">
 </p>
 
 <h1 align="center">FireClient</h1>
