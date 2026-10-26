@@ -7,20 +7,21 @@
 <p align="center"><b>Minecraft, Your Way.</b></p>
 
 <p align="center">
-  <a href="https://github.com/untitledinfo/fireclient-launcher/releases/download/v1.0/FireClient-Setup.exe"><img src="https://img.shields.io/badge/Download%20for%20Windows-FireClient--Setup.exe-E11D2E?style=for-the-badge" alt="Download FireClient-Setup.exe"></a>
+  <a href="https://github.com/untitledinfo/verifed-fireclient/releases/"><img src="https://img.shields.io/badge/Download%20for%20Windows-Verified%20Releases-E11D2E?style=for-the-badge" alt="Download FireClient for Windows"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/untitledinfo/fireclient-launcher/releases"><img src="https://img.shields.io/github/downloads/untitledinfo/fireclient-launcher/total?style=flat-square&color=E11D2E&label=total%20downloads" alt="Total downloads"></a>
-  <a href="https://github.com/untitledinfo/fireclient-launcher/releases/tag/v1.0"><img src="https://img.shields.io/github/downloads/untitledinfo/fireclient-launcher/v1.0/FireClient-Setup.exe?style=flat-square&color=E11D2E&label=v1.0%20installer" alt="Installer downloads"></a>
-  <a href="https://github.com/untitledinfo/fireclient-launcher/releases/latest"><img src="https://img.shields.io/github/v/release/untitledinfo/fireclient-launcher?style=flat-square&color=E11D2E&label=latest" alt="Latest release"></a>
+  <a href="https://github.com/untitledinfo/verifed-fireclient/releases/"><img src="https://img.shields.io/github/downloads/untitledinfo/verifed-fireclient/total?style=flat-square&amp;color=E11D2E&amp;label=total%20downloads" alt="Total downloads"></a>
+  <a href="https://github.com/untitledinfo/verifed-fireclient/releases/tag/v1.0.10"><img src="https://img.shields.io/github/downloads/untitledinfo/verifed-fireclient/v1.0.10/FireClient-Setup.exe?style=flat-square&amp;color=E11D2E&amp;label=v1.0.10%20installer" alt="v1.0.10 installer downloads"></a>
+  <a href="https://github.com/untitledinfo/verifed-fireclient/releases/latest"><img src="https://img.shields.io/github/v/release/untitledinfo/verifed-fireclient?style=flat-square&amp;color=E11D2E&amp;label=latest" alt="Latest release"></a>
+  <a href="https://discord.gg/jK74ZtrDFm"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscord.com%2Fapi%2Fv10%2Finvites%2FjK74ZtrDFm%3Fwith_counts%3Dtrue&amp;query=%24.approximate_member_count&amp;label=Discord%20members&amp;logo=discord&amp;logoColor=white&amp;color=5865F2&amp;style=flat-square" alt="Discord total members"></a>
   <img src="https://img.shields.io/badge/platform-Windows-1f1f23?style=flat-square" alt="Windows">
   <img src="https://img.shields.io/badge/license-proprietary-1f1f23?style=flat-square" alt="Proprietary license">
 </p>
 
 <p align="center">
   <a href="https://fireclient.net">Website</a> &nbsp;|&nbsp;
-  <a href="https://github.com/untitledinfo/fireclient-launcher/releases">Releases</a> &nbsp;|&nbsp;
+  <a href="https://github.com/untitledinfo/verifed-fireclient/releases/">Verified Releases</a> &nbsp;|&nbsp;
   <a href="https://discord.gg/jK74ZtrDFm">Discord</a> &nbsp;|&nbsp;
   <a href="LICENSE">License</a>
 </p>
@@ -33,7 +34,7 @@ We wanted a Minecraft launcher that gets out of your way. Install it, pick a ver
 
 FireClient is a launcher and an in-game client in one. It handles the boring parts (Java, versions, mod loaders, updates) and gives you a clean in-game menu once you're in. It's a Windows beta, so expect it to keep changing.
 
-It is **not open source**. This repo is the home for the README, the license and the release info. More on that [below](#license).
+It is **not open source**. This repository contains the README and license information. Downloadable builds are published separately on the [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases/) page. More on the license [below](#license).
 
 ## Screenshots
 
@@ -114,7 +115,7 @@ Switching between them never touches your worlds, profiles or mods. They all liv
 
 ## What we're working on next
 
-These are planned, not shipped. The [Releases](https://github.com/untitledinfo/fireclient-launcher/releases) page is where they'll show up first.
+These are planned, not shipped. The [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases/) page is where updates will be published first.
 
 - More in-game HUD modules and layout options
 - Backup and restore for worlds, with one click
@@ -125,14 +126,15 @@ Got an idea? Drop it in the [Discord](https://discord.gg/jK74ZtrDFm).
 
 ## Install
 
-1. Grab [`FireClient-Setup.exe`](https://github.com/untitledinfo/fireclient-launcher/releases/download/v1.0/FireClient-Setup.exe).
-2. Run it and read the Terms & Privacy notice.
-3. Hit **I Agree** to install.
-4. Open FireClient and choose Offline Mode, or sign in for Online Mode.
+Download the latest Windows installer from the [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases/) page.
+
+1. Open the downloaded installer and read the Terms & Privacy notice.
+2. Hit **I Agree** to install.
+3. Open FireClient and choose Offline Mode, or sign in for Online Mode.
 
 You need Windows 10 or 11 (64-bit) and an internet connection for game files and updates.
 
-Heads up: Windows SmartScreen might warn you about a new installer. Only download from this page or [fireclient.net](https://fireclient.net), never from re-uploads.
+Heads up: Windows SmartScreen might warn you about a new installer. Only download from the [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases/) page or [fireclient.net](https://fireclient.net), never from re-uploads.
 
 ## Privacy
 
