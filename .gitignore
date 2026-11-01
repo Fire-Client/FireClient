@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Docusaurus build output
+.docusaurus/
+build/
+
+# Environment and IDE files
+.DS_Store
+.env
+.env.local
+.vscode/
+.idea/
