@@ -1,206 +1,120 @@
 ---
 id: github-install
-title: GitHub Source & Developer Build
-sidebar_label: GitHub Developer Setup
+title: Multi-Platform Architecture & Build Guide
+sidebar_label: Architecture & Build
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Full GitHub Installation & Build from Source
+# Multi-Platform Architecture & Release Pipeline
 
-This guide covers cloning, building, and running FireClient directly from the GitHub repository.
+This guide documents FireClient's multi-platform desktop architecture, release verification workflow, and packaging commands across **Windows**, **macOS**, and **Linux**.
 
 ---
 
 ## 1. Toolchain & Prerequisites
 
-Ensure the following dependencies are installed on your workstation:
-
-| Tool | Required Version | Verification Command | Notes |
+| Tool | Required Version | Verification Command | Purpose |
 | :--- | :--- | :--- | :--- |
-| **Git** | `2.40+` | `git --version` | Source control |
-| **Node.js** | `v20 LTS` or `v22` | `node -v` | Launcher desktop UI & packaging |
-| **npm** / **pnpm** | `npm 10+` or `pnpm 9+` | `npm -v` | Package manager |
-| **Java JDK** | `Java 21 (Temurin)` | `java -version` | Fabric client compilation & Minecraft runtime |
-| **Gradle** | `8.8+` (or `./gradlew`) | `gradle -v` | In-game mod build lifecycle |
+| **CMake + MSVC (VS 2022)** | `CMake 3.24+`, C++20 | `cmake --version` | Native Windows C++20 / WebView2 host (`FireClient.exe`) |
+| **NSIS** | `3.09+` | `makensis /VERSION` | Windows user-scoped installer (`FireClient-Setup.exe`) |
+| **Node.js & npm** | `Node 20 LTS` or `v22` | `node -v` | macOS & Linux Electron Desktop host (`desktop/`) & docs |
+| **Java JDK** | `Java 21 (Temurin)` | `java -version` | Fabric / Forge in-game client mod compilation |
+| **Gradle** | `8.8+` (`./gradlew`) | `./gradlew -v` | Fabric Loom & ForgeGradle build lifecycle |
 
 ---
 
-## 2. Clone the Repository
+## 2. Project Architecture
 
-Clone the project from the official repository:
-
-```bash
-# Clone the repository
-git clone https://github.com/Fire-Client/FireClient.git
-
-# Enter project root
-cd FireClient
-
-# Fetch all branches and submodules (if present)
-git submodule update --init --recursive
-```
-
----
-
-## 3. Project Architecture
-
-The repository is organized into two primary components:
+FireClient shares a single unified UI (`web/`) across a lightweight native Windows C++20/WebView2 executable and a cross-platform Electron host for macOS and Linux:
 
 ```text
 FireClient/
-├── launcher/                  # Desktop launcher application (Electron / Node.js)
-│   ├── src/                   # Main process, renderer, auth flow
-│   ├── package.json
-│   └── electron-builder.yml   # Windows NSIS installer configuration
-├── client-mod/                # In-game Fabric utility client (Java 21)
-│   ├── src/main/java/         # Fabric mixins, HUD rendering, Modrinth API
-│   ├── build.gradle           # Fabric Loom build configuration
-│   └── gradle.properties
-└── package.json
+├── native/                     # Windows 10/11 C++20 + WebView2 Host & Frameless Updater
+│   ├── src/                    # Launcher core, Mojang/Adoptium downloader, SHA-256 updater
+│   └── CMakeLists.txt
+├── desktop/                    # macOS & Linux Electron Host (Apple Silicon, Intel, Linux x64/arm64)
+│   ├── main.js                 # Full IPC parity, Modrinth manager, PaperMC host, Keychain/libsecret vault
+│   ├── preload.js              # Context-isolated window.electronAPI bridge
+│   ├── entitlements.mac.plist  # macOS Hardened Runtime & JIT entitlements
+│   └── package.json            # electron-builder config (.dmg, .zip, .AppImage, .deb, .tar.gz)
+├── web/                        # Shared Launcher Frontend & Glassmorphic Standalone Updater
+│   ├── index.html              # Main launcher UI + Multi-OS Install Hub modal
+│   └── updater.html            # Frameless verified update & release-notes window
+├── mod/ & mod-forge/           # Bundled in-game FireClient HUD & PvP/SMP client mods
+├── scripts/                    # 1-line OS installers & Authenticode / Defender verification suite
+│   ├── install-windows.ps1
+│   ├── install-macos.sh
+│   ├── install-linux.sh
+│   ├── Sign-And-Generate-Yml.ps1
+│   └── Verify-Windows-Release.ps1
+└── installer.nsi               # Windows NSIS installer script (asInvoker)
 ```
 
 ---
 
-## 4. Building the In-Game Fabric Client
+## 3. Building by Target Platform
 
-Before bundling the launcher, compile the internal Minecraft client mod:
+<Tabs groupId="build-platform">
+<TabItem value="windows" label="Windows (Native C++20 + NSIS)" default>
+
+```powershell
+# 1. Configure & compile native C++20 / WebView2 Release binary (x64)
+cmake -S native -B native/build -A x64
+cmake --build native/build --config Release
+
+# 2. Package NSIS installer (FireClient-Setup.exe)
+& "C:\Program Files (x86)\NSIS\makensis.exe" /V2 "/DVERSION=2.2.7" installer.nsi
+```
+
+Outputs:
+* `native/build/Release/FireClient.exe`
+* `dist-native/FireClient-Setup.exe`
+* `dist-native/FireClient-portable.zip`
+
+</TabItem>
+<TabItem value="macos" label="macOS (.dmg Universal / arm64 / x64)">
 
 ```bash
-cd client-mod
+cd desktop
+npm ci
 
-# Generate Fabric Loom sources & mappings
-./gradlew genSources
-
-# Compile and package the remapped Fabric jar
-./gradlew build
+# Build Universal, Apple Silicon (arm64), and Intel (x64) DMG & ZIP artifacts
+npm run dist:mac
 ```
 
-The output jar will be located at:
-```text
-client-mod/build/libs/fireclient-mod-1.21.1.jar
-```
+Outputs in `dist-desktop/`:
+* `FireClient-macOS-universal.dmg`
+* `FireClient-macOS-arm64.dmg`
+* `FireClient-macOS-x64.dmg`
 
-To test the in-game client in a local development environment:
+</TabItem>
+<TabItem value="linux" label="Linux (.AppImage / .deb / .tar.gz)">
+
 ```bash
-./gradlew runClient
+cd desktop
+npm ci
+
+# Build AppImage, Debian package, and portable tarball
+npm run dist:linux
 ```
+
+Outputs in `dist-desktop/`:
+* `FireClient-Linux-x86_64.AppImage`
+* `FireClient-Linux-amd64.deb`
+* `FireClient-Linux-x86_64.tar.gz`
+
+</TabItem>
+</Tabs>
 
 ---
 
-## 5. Building & Running the Desktop Launcher
+## 4. Verified Release & Checksum Pipeline
 
-Return to the launcher root and install Node dependencies:
+Official binary releases are signed, scanned with Microsoft Defender, hashed (`SHA-256` & `SHA-512`), and published to [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases) via `.github/workflows/sign-release.yml`:
 
-```bash
-cd ../launcher
-
-# Install dependencies
-npm install
-```
-
-### Running in Development Mode
-Launch the application with live reload enabled:
-```bash
-npm run dev
-```
-
-### Packaging the Full Installer (`FireClient-Setup.exe`)
-Compile the renderer, bundle the assets, and generate the Windows NSIS installer:
-
-```bash
-# Package production binaries for Windows (x64)
-npm run build:win
-```
-
-The compiled binaries will be output to:
-```text
-dist/
-├── FireClient-Setup.exe        # Standalone NSIS installer
-├── FireClient-portable.exe     # Standalone portable executable
-└── win-unpacked/               # Unpacked application folder
-```
-
----
-
-## 6. GitHub Actions CI/CD Pipeline
-
-To automate the compilation and release packaging on your own fork, add `.github/workflows/release.yml`:
-
-```yaml
-name: Build & Release FireClient
-
-on:
-  push:
-    tags:
-      - 'v*'
-  workflow_dispatch:
-
-jobs:
-  build-client:
-    name: Build Fabric Client Mod
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Java 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '21'
-
-      - name: Grant Gradlew Permission
-        run: chmod +x client-mod/gradlew
-
-      - name: Build Mod with Gradle
-        working-directory: ./client-mod
-        run: ./gradlew build
-
-      - name: Upload Mod Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: client-mod-jar
-          path: client-mod/build/libs/*.jar
-
-  build-launcher:
-    name: Build Windows Launcher
-    needs: build-client
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Download Mod Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: client-mod-jar
-          path: launcher/assets/runtime/
-
-      - name: Install Dependencies
-        working-directory: ./launcher
-        run: npm ci
-
-      - name: Build Windows Installer
-        working-directory: ./launcher
-        run: npm run build:win
-
-      - name: Compute SHA-256 Checksum
-        run: |
-          Get-FileHash launcher/dist/FireClient-Setup.exe -Algorithm SHA256 | Out-File checksums.txt
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: |
-            launcher/dist/FireClient-Setup.exe
-            checksums.txt
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
+1. **`sign-windows`**: Authenticode-signs `FireClient-Setup.exe` with RFC 3161 timestamp fallback, verifies PE mitigations (`NX_COMPAT`, `DYNAMIC_BASE`) and `asInvoker` UAC manifest, scans with `MpCmdRun.exe`, and emits `latest.yml` + `FireClient-Setup.exe.sha256`.
+2. **`build-macos`**: Packages Universal, `arm64`, and `x64` `.dmg`/`.zip` bundles on `macos-latest`.
+3. **`build-linux`**: Packages `.AppImage`, `.deb`, and `.tar.gz` bundles on `ubuntu-latest`.
+4. **`publish-release`**: Merges all platform hashes into `SHA256SUMS.txt` and publishes the verified GitHub Release consumed by FireClient's built-in updater and one-line installer scripts.

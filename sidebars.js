@@ -17,6 +17,8 @@ const sidebars = {
       collapsed: false,
       items: [
         'windows',
+        'macos',
+        'linux',
         'installation',
       ],
     },

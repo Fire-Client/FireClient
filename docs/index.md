@@ -7,24 +7,25 @@ slug: /
 
 # Welcome to FireClient Documentation
 
-**FireClient** is a modern, lightweight, high-performance Minecraft Java Edition launcher and bundled Fabric in-game client. It is engineered to deliver high framerates, comprehensive utility tools for survival multiplayer (SMP) and PvP, and zero bloat.
+**FireClient** is a modern, lightweight, high-performance Minecraft Java Edition launcher and bundled in-game client for **Windows 10/11**, **macOS 12+ (Apple Silicon & Intel)**, and **Linux (`x86_64` & `arm64`)**. It delivers ultra-fast launches, draggable HUD widgets for SMP and PvP, local PaperMC server hosting, and seamless Modrinth integration.
 
 ---
 
 ## 🌟 Key Highlights
 
-* **Integrated Modrinth Manager:** Browse, search, install, and update Fabric mods without manually moving files into folders.
-* **Modular In-Game HUD:** Customize your screen with draggable widgets: FPS, CPS, Armor Status, Keystrokes, and Ping via the in-game GUI (`Right Shift`).
-* **Zero Telemetry & Safe Authentication:** Official Microsoft OAuth 2.0 authentication. Auth tokens are stored encrypted using the Windows Data Protection API (DPAPI).
-* **Multi-Platform Support:** First-class support for Windows 10/11 (64-bit), Linux AppImages, and macOS.
-* **Full Open-Source Toolchain:** Built with Java 21, Gradle, and Fabric Loom.
+* **Multi-Platform Desktop Hosts:** Native C++20/WebView2 runtime on Windows 10/11 plus native Apple Silicon & Intel `.dmg` builds on macOS and `.AppImage` / `.deb` / `.tar.gz` packages on Linux.
+* **Integrated Modrinth & Server Suite:** Browse, install, and toggle mods, shaders, and resource packs in one click, or host and manage local PaperMC servers directly inside the launcher.
+* **Modular In-Game HUD:** Customize your screen with draggable widgets—FPS, CPS, Ping, Coordinates, Armor Status, Keystrokes, and Effects—via the in-game GUI (`Right Shift`).
+* **Verified Auto-Updater & Safe Auth:** Official Microsoft OAuth 2.0 + Offline Mode. Refresh tokens are encrypted locally via **Windows DPAPI**, **macOS Keychain**, or **Linux `libsecret`**, and every update is SHA-256 verified before launch.
 
 ---
 
 ## 🧭 Navigation
 
-* [**Windows Installation Guide**](./windows): Download, verify SHA-256, bypass SmartScreen, and configure GPU acceleration.
-* [**Full Installation Guide**](./installation): Multi-platform setup covering Windows, Linux, macOS, existing Fabric profiles, and PojavLauncher.
-* [**System Requirements**](./requirements): Hardware prerequisites and Java requirements.
-* [**Full GitHub Build Guide**](./github-install): Instructions for cloning, building from source, running debug clients, and setting up CI/CD.
-* [**Troubleshooting & FAQ**](./troubleshooting): Fixes for exit code 1, smartscreen warnings, and mixin conflicts.
+* [**Windows Installation Guide**](./windows): 1-line PowerShell setup, `.exe` & portable `.zip` downloads, SHA-256 verification, SmartScreen, and GPU tuning.
+* [**macOS Installation Guide**](./macos): 1-line Terminal setup, Universal / Apple Silicon / Intel `.dmg` downloads, Gatekeeper approval, and Keychain notes.
+* [**Linux Installation Guide**](./linux): 1-line Terminal setup, `.AppImage`, `.deb`, and `.tar.gz` packages, FUSE 2 tips, and NVIDIA PRIME offload.
+* [**Multi-Platform Overview**](./installation): Unified comparison across Desktop Launcher, third-party Fabric/Forge profiles, and PojavLauncher.
+* [**System Requirements**](./requirements): Hardware prerequisites and automatic Java 8 / 17 / 21 runtime matrix across Windows, macOS, and Linux.
+* [**Architecture & Build Guide**](./github-install): Multi-platform build toolchain (`native/`, `desktop/`, `web/`, client mods, and GitHub Actions release verification).
+* [**Troubleshooting & FAQ**](./troubleshooting): Fixes for Exit Code 1, SmartScreen, macOS Gatekeeper, Linux FUSE, and mixin conflicts.

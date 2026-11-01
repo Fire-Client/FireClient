@@ -4,33 +4,25 @@
 
 <h1 align="center">FireClient</h1>
 
-<p align="center"><b>Minecraft, Your Way.</b></p>
-
-
-
-
-
-
-
-
-
-
+<p align="center"><b>Minecraft, Your Way — on Windows, macOS &amp; Linux.</b></p>
 
 <p align="center">
-  <a href="https://github.com/untitledinfo/verifed-fireclient/releases/"><img src="https://img.shields.io/badge/Download%20for%20Windows-Verified%20Releases-E11D2E?style=for-the-badge" alt="Download FireClient for Windows"></a>
+  <a href="https://github.com/untitledinfo/verifed-fireclient/releases/latest/download/FireClient-Setup.exe"><img src="https://img.shields.io/badge/Windows-Download%20.exe-E11D2E?style=for-the-badge&amp;logo=windows&amp;logoColor=white" alt="Download FireClient for Windows"></a>
+  <a href="https://github.com/untitledinfo/verifed-fireclient/releases/latest/download/FireClient-macOS-universal.dmg"><img src="https://img.shields.io/badge/macOS-Download%20.dmg-1f1f23?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Download FireClient for macOS"></a>
+  <a href="https://github.com/untitledinfo/verifed-fireclient/releases/latest/download/FireClient-Linux-x86_64.AppImage"><img src="https://img.shields.io/badge/Linux-Download%20.AppImage%20%2F%20.deb-1f1f23?style=for-the-badge&amp;logo=linux&amp;logoColor=white" alt="Download FireClient for Linux"></a>
 </p>
 
 <p align="center">
   <a href="https://github.com/untitledinfo/verifed-fireclient/releases/"><img src="https://img.shields.io/github/downloads/untitledinfo/verifed-fireclient/total?style=flat-square&amp;color=E11D2E&amp;label=total%20downloads" alt="Total downloads"></a>
-  <a href="https://github.com/untitledinfo/verifed-fireclient/releases/tag/v1.0.10"><img src="https://img.shields.io/github/downloads/untitledinfo/verifed-fireclient/v1.0.10/FireClient-Setup.exe?style=flat-square&amp;color=E11D2E&amp;label=v1.0.10%20installer" alt="v1.0.10 installer downloads"></a>
   <a href="https://github.com/untitledinfo/verifed-fireclient/releases/latest"><img src="https://img.shields.io/github/v/release/untitledinfo/verifed-fireclient?style=flat-square&amp;color=E11D2E&amp;label=latest" alt="Latest release"></a>
   <a href="https://discord.gg/jK74ZtrDFm"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscord.com%2Fapi%2Fv10%2Finvites%2FjK74ZtrDFm%3Fwith_counts%3Dtrue&amp;query=%24.approximate_member_count&amp;label=Discord%20members&amp;logo=discord&amp;logoColor=white&amp;color=5865F2&amp;style=flat-square" alt="Discord total members"></a>
-  <img src="https://img.shields.io/badge/platform-Windows-1f1f23?style=flat-square" alt="Windows">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-1f1f23?style=flat-square" alt="Windows | macOS | Linux">
   <img src="https://img.shields.io/badge/license-proprietary-1f1f23?style=flat-square" alt="Proprietary license">
 </p>
 
 <p align="center">
   <a href="https://fireclient.net">Website</a> &nbsp;|&nbsp;
+  <a href="https://docs.fireclient.net">Docs</a> &nbsp;|&nbsp;
   <a href="https://github.com/untitledinfo/verifed-fireclient/releases/">Verified Releases</a> &nbsp;|&nbsp;
   <a href="https://discord.gg/jK74ZtrDFm">Discord</a> &nbsp;|&nbsp;
   <a href="LICENSE">License</a>
@@ -42,9 +34,9 @@
 
 We wanted a Minecraft launcher that gets out of your way. Install it, pick a version, and play. No account wall, no pile of bundled junk, and no mystery about where your worlds and settings end up.
 
-FireClient is a launcher and an in-game client in one. It handles the boring parts (Java, versions, mod loaders, updates) and gives you a clean in-game menu once you're in. It's a Windows beta, so expect it to keep changing.
+FireClient is a launcher and an in-game client in one. It handles the boring parts (Java, versions, mod loaders, verified SHA-256 updates) and gives you a clean in-game menu once you're in — now running across **Windows 10/11**, **macOS 12+ (Apple Silicon & Intel)**, and **64-bit Linux**.
 
-It is **not open source**. This repository contains the README and license information. Downloadable builds are published separately on the [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases/) page. More on the license [below](#license).
+It is **not open source**. This repository hosts the documentation (`docs.fireclient.net`), README, and license information. Official signed & verified builds are published on the [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases/) page. More on the license [below](#license).
 
 ## Screenshots
 
@@ -80,20 +72,21 @@ You don't have to sign in to use FireClient.
 
 **Offline Mode** works with no account at all. You get singleplayer, servers that run in offline mode, and local skins you pick yourself.
 
-**Online Mode** signs you in with your Microsoft account. You need a real Minecraft account for this, and it's what you'll use to join servers that check accounts. Your login token is stored on your PC and encrypted with Windows DPAPI.
+**Online Mode** signs you in with your Microsoft account. You need a real Minecraft account for this, and it's what you'll use to join servers that check accounts. Your login token is stored locally on your machine and encrypted with **Windows DPAPI**, **macOS Keychain**, or **Linux `libsecret`**.
 
 Switching between them never touches your worlds, profiles or mods. They all live in the same place either way.
 
 ## What's in it
 
 **The launcher**
-- Home, Versions, Worlds, Servers, Screenshots, Accounts and Skins pages in one sidebar
-- Installs Minecraft versions and the right Java for each one
+- Home, Versions, Worlds, Servers, Host Server, Screenshots, Accounts and Skins pages in one sidebar
+- Installs Minecraft versions and the right Adoptium Java runtime (`x64` or native Apple Silicon `aarch64`) for each one
 - Separate profiles, each with its own version, mods, resource packs and worlds
 - Fabric, Forge and NeoForge
+- Redesigned standalone glassmorphic **Updater** with live SHA-256 verification and release notes, plus an in-app **Multi-OS Install Hub**
 - A live console that shows install and launch progress, game output and errors as they happen
 - A Performance page and a Usage page
-- Host Server page for running a local server (PaperMC)
+- Host Server page for running and managing local PaperMC servers
 - Live FireClient Discord member count, with join and copy-invite buttons
 - Favorite servers: star up to 10 on the Servers page and they show on Home
 - Discord Rich Presence if you want it (shows your version and server)
@@ -107,7 +100,7 @@ Switching between them never touches your worlds, profiles or mods. They all liv
 - Mod library scan that matches your installed mods to their Modrinth pages
 - Quick-access buttons for your instance, mods, screenshots, saves and shaders folders
 
-**In-game (Fabric, shown on 1.21.1)**
+**In-game (Fabric & Forge)**
 - A custom FireClient title screen and FireClient Menu button
 - HUD elements you can switch on or off: watermark, FPS, ping, coordinates, direction, memory, clock, keystrokes, armor, effects and CPS
 - Edit HUD positions to put everything where you want it
@@ -118,10 +111,32 @@ Switching between them never touches your worlds, profiles or mods. They all liv
 - Nothing is sent unless you actually use these
 
 **Your files, your call**
-- Everything lives in one `.fireclient` folder on your PC
+- Everything lives in one `.fireclient` folder in your home directory (`%USERPROFILE%\.fireclient` on Windows, `~/.fireclient` on macOS & Linux)
 - Logs and crash logs stay local. The launcher never uploads them
 - A copy-diagnostics button for when you need help. You decide where to paste it
 - Uninstalling leaves your worlds and game data alone
+
+## Install
+
+Download verified packages from [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases/), or use the official one-line installers below:
+
+### Windows 10 / 11 (64-bit)
+```powershell
+irm https://raw.githubusercontent.com/untitledinfo/verifed-fireclient/main/scripts/install-windows.ps1 | iex
+```
+*Or download [`FireClient-Setup.exe`](https://github.com/untitledinfo/verifed-fireclient/releases/latest/download/FireClient-Setup.exe) / [`FireClient-portable.zip`](https://github.com/untitledinfo/verifed-fireclient/releases/latest/download/FireClient-portable.zip) manually. Note: Windows SmartScreen may warn about a newly published build — only download from [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases/) or [fireclient.net](https://fireclient.net).*
+
+### macOS 12+ (Apple Silicon M1–M4 & Intel)
+```bash
+curl -fsSL https://raw.githubusercontent.com/untitledinfo/verifed-fireclient/main/scripts/install-macos.sh | bash
+```
+*Or download [`FireClient-macOS-universal.dmg`](https://github.com/untitledinfo/verifed-fireclient/releases/latest/download/FireClient-macOS-universal.dmg), drag **FireClient** into **Applications**, and approve in **System Settings ➔ Privacy & Security** if prompted by Gatekeeper.*
+
+### Linux (`x86_64` & `arm64` — Ubuntu, Debian, Fedora, Arch, Mint, SteamOS)
+```bash
+curl -fsSL https://raw.githubusercontent.com/untitledinfo/verifed-fireclient/main/scripts/install-linux.sh | bash
+```
+*Or download [`FireClient-Linux-x86_64.AppImage`](https://github.com/untitledinfo/verifed-fireclient/releases/latest/download/FireClient-Linux-x86_64.AppImage), [`FireClient-Linux-amd64.deb`](https://github.com/untitledinfo/verifed-fireclient/releases/latest/download/FireClient-Linux-amd64.deb), or [`FireClient-Linux-x86_64.tar.gz`](https://github.com/untitledinfo/verifed-fireclient/releases/latest/download/FireClient-Linux-x86_64.tar.gz).*
 
 ## What we're working on next
 
@@ -133,18 +148,6 @@ These are planned, not shipped. The [Verified FireClient Releases](https://githu
 - More Minecraft versions for the in-game client
 
 Got an idea? Drop it in the [Discord](https://discord.gg/jK74ZtrDFm).
-
-## Install
-
-Download the latest Windows installer from the [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases/) page.
-
-1. Open the downloaded installer and read the Terms & Privacy notice.
-2. Hit **I Agree** to install.
-3. Open FireClient and choose Offline Mode, or sign in for Online Mode.
-
-You need Windows 10 or 11 (64-bit) and an internet connection for game files and updates.
-
-Heads up: Windows SmartScreen might warn you about a new installer. Only download from the [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases/) page or [fireclient.net](https://fireclient.net), never from re-uploads.
 
 ## Privacy
 
