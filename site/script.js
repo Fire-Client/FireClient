@@ -1,5 +1,0 @@
-(function(){var q=document.getElementById('q'),n=[].slice.call(document.querySelectorAll('nav a'));
-q.addEventListener('input',function(){var v=q.value.toLowerCase().trim();n.forEach(function(a){a.style.display=!v||a.textContent.toLowerCase().indexOf(v)>-1?'':'none'})});
-document.getElementById('theme').addEventListener('click',function(){var r=document.documentElement,d=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);r.setAttribute('data-theme',d?'light':'dark')});
-document.querySelectorAll('pre').forEach(function(p){var b=document.createElement('button');b.textContent='Copy';b.onclick=function(){var t=p.querySelector('code').innerText;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)},function(){})};p.appendChild(b)});
-})();
