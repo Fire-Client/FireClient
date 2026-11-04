@@ -269,6 +269,7 @@ open(out + "/404.html", "w", encoding="utf-8").write(
 
 urls = "\n".join(f"  <url><loc>{url_of(p)}</loc><lastmod>{TODAY}</lastmod><priority>{'1.0' if p['slug']=='index' else '0.8'}</priority></url>" for p in pages)
 open(out + "/sitemap.xml", "w").write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
+open(out + "/CNAME", "w").write(BASE.split("//")[1] + "\n")
 open(out + "/robots.txt", "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n")
 
 arts = "\n".join('<article id="p-%s" hidden>%s</article>' % (p["slug"], article(p, i, True)) for i, p in enumerate(pages))
