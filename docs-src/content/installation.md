@@ -3,6 +3,8 @@ title: Install FireClient on Windows
 description: Install the FireClient Minecraft launcher on Windows 10 or 11. Requirements, installer steps, the one-line PowerShell install and how to handle the SmartScreen warning.
 group: Get started
 order: 3
+seo_title: "How to Install FireClient (Fire Client) on Windows: 5 Steps"
+keywords: "install FireClient, how to install FireClient, FireClient setup, FireClient SmartScreen"
 ---
 FireClient installs like any other Windows program. It takes a couple of minutes.
 

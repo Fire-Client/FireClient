@@ -1,11 +1,13 @@
 ---
 title: FireClient documentation
-description: Docs for FireClient (Fire Client), a free Minecraft launcher with an in-game client. Install guides, downloads, release notes, HUD, mods, servers and troubleshooting.
+description: "Download FireClient (Fire Client), the free Minecraft launcher and client. Latest v1.0.10 for Windows, macOS and Linux. Install guide, HUD, mods, servers and help."
 group: Get started
 order: 1
 hero: true
+seo_title: "FireClient Download: Fire Client Free Minecraft Launcher and Docs"
+keywords: "FireClient official, FireClient docs, Fire Client launcher, FireClient Windows, FireClient macOS, FireClient Linux"
 ---
-FireClient is a Minecraft launcher and in-game client in one install. It handles Java, game versions, mod loaders and updates, then gives you a menu and a HUD once you are in the game.
+FireClient (also written Fire Client) is a free Minecraft launcher and in-game client in one install. It handles Java, game versions, mod loaders and updates, then gives you a menu and a HUD once you are in the game.
 
 These docs cover the whole thing, from your first install to hosting a server. Pick the path that fits you.
 

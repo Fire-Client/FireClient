@@ -3,6 +3,8 @@ title: FAQ
 description: Answers to common questions about FireClient, including price, supported systems, Fabric, Forge, safety and the difference between FireClient and Fire Client.
 group: Reference
 order: 24
+seo_title: "FireClient FAQ: Is Fire Client Safe, Free and How Do I Download It?"
+keywords: "is FireClient safe, is FireClient free, FireClient FAQ, Fire Client not working"
 ---
 ### What is FireClient?
 
@@ -43,3 +45,15 @@ No benchmarks are published, so there is no speed claim. See [Memory and perform
 ### Is FireClient affiliated with Mojang or Microsoft?
 
 No. It is independent and not endorsed by them.
+
+### Is Fire Client the same as FireClient?
+
+Yes. People write the name as FireClient or Fire Client. It is the same free Minecraft launcher and in-game client documented on this site.
+
+### Where do I download FireClient?
+
+Open the [download page](download.md). It shows the latest version straight from the official releases page, with a file for Windows, macOS and Linux.
+
+### Is FireClient the same as the FireClient SMP mod on Modrinth?
+
+No. Other projects share the FireClient name. This site documents the FireClient launcher and in-game client from fireclient.net. Download it only from the links on the [download page](download.md).

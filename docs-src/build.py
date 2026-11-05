@@ -1,10 +1,11 @@
 import glob, os, re, json, html, shutil, base64, yaml, markdown
 
 BASE = os.environ.get("BASE", "https://docs.fireclient.net").rstrip("/")
-TODAY = "2026-11-04"
+TODAY = "2026-11-05"
 LATEST = "v1.0.10"
-OG = "https://www.fireclient.net/assets/og-image.png"
+OG = BASE + "/assets/og-image.png"
 SITE = "FireClient Docs"
+KW = "FireClient, Fire Client, FireClient download, Fire Client download, download FireClient, download Fire Client, FireClient launcher, FireClient Minecraft, FireClient latest version, FireClient install, FireClient mods, FireClient HUD, free Minecraft launcher, Minecraft client, FireClient docs"
 GH = "https://github.com/fire-client/fireclient"
 REL = "https://github.com/untitledinfo/verifed-fireclient/releases"
 here = os.path.dirname(os.path.abspath(__file__))
@@ -79,6 +80,15 @@ body.menu nav{transform:none}body.menu::after{content:"";position:fixed;inset:0;
 header{padding-left:14px;padding-right:14px;gap:10px;z-index:50}#q{max-width:none}
 .hero{flex-direction:column;align-items:flex-start;padding:24px}.hero h1,h1{font-size:2rem}.pn{flex-direction:column}.pn span:last-child{text-align:left}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px}.chips span{font-size:12px;font-weight:600;padding:3px 11px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}
+.rel{margin:1.2em 0;border:1px solid var(--line);border-radius:16px;padding:18px;background:radial-gradient(420px 160px at 0 0,var(--glow),transparent 70%),var(--subtle)}
+.rel-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:14px;color:var(--muted)}
+.rel-tag{font-size:20px;font-weight:800;color:#fff;padding:2px 14px;border-radius:10px;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+.rel-files{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:14px}
+.rel-f{display:block;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);transition:border-color .15s,transform .15s}.rel-f:hover{text-decoration:none;border-color:var(--brand);transform:translateY(-2px)}
+.rel-f b{display:block;font-size:14px;word-break:break-all}.rel-f span{font-size:12px;color:var(--muted)}
+a.na{opacity:.5;text-decoration:line-through}
 """.replace("@@DARK@@", DARK)
 
 JS = """
@@ -96,6 +106,18 @@ if(grp)grp.style.display=gv?'':'none';none.hidden=hit>0;if(v)body.classList.add(
 q.addEventListener('keydown',function(e){if(e.key==='Enter'){var a=$$('nav a').filter(function(x){return x.style.display!=='none'})[0];if(a)a.click()}if(e.key==='Escape'){q.value='';q.dispatchEvent(new Event('input'));q.blur()}});
 document.addEventListener('keydown',function(e){var t=e.target.tagName;if((e.key==='/'&&t!=='INPUT'&&t!=='TEXTAREA')||((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k')){e.preventDefault();q.focus();q.select()}});
 $$('pre').forEach(function(p){var b=document.createElement('button');b.textContent='Copy';b.addEventListener('click',function(){var t=p.querySelector('code').innerText;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='Copied \\u2713';setTimeout(function(){b.textContent='Copy'},1600)},function(){b.textContent='Press Ctrl+C';setTimeout(function(){b.textContent='Copy'},1600)})});p.appendChild(b)});
+var REPO='untitledinfo/verifed-fireclient',KEY='fc-rel-v1';
+function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
+function fd(x){try{return new Date(x).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}catch(e){return ''}}
+function sz(n){return n>1048576?(n/1048576).toFixed(1)+' MB':Math.round(n/1024)+' KB'}
+function apply(r){var tag=r.tag_name,by={},as=r.assets||[];as.forEach(function(a){by[a.name]=a});
+$$('[data-latest]').forEach(function(e){e.textContent=tag});$$('[data-latest-date]').forEach(function(e){e.textContent=fd(r.published_at)});
+$$('a[href*="releases/latest/download/"]').forEach(function(a){var n=decodeURIComponent(a.getAttribute('href').split('/').pop()),m=by[n];if(m)a.href=m.browser_download_url;else if(as.length){a.classList.add('na');a.title='Not included in '+tag}});
+var box=$('#rel');if(box){var h='<div class="rel-top"><span class="rel-tag">'+esc(tag)+'</span><span>Released '+esc(fd(r.published_at))+'</span><a href="'+esc(r.html_url)+'">Release notes on GitHub</a></div>';
+if(as.length)h+='<div class="rel-files">'+as.filter(function(a){return !/[.](sha256|sig|asc)$/i.test(a.name)}).map(function(a){return '<a class="rel-f" href="'+esc(a.browser_download_url)+'"><b>'+esc(a.name)+'</b><span>'+sz(a.size)+' | '+(a.download_count||0)+' downloads'+(a.digest?' | '+esc(a.digest.slice(0,19))+'...':'')+'</span></a>'}).join('')+'</div>';
+box.innerHTML=h}}
+var cr=null;try{cr=JSON.parse(sessionStorage.getItem(KEY))}catch(e){}
+if(cr&&Date.now()-cr.t<600000)apply(cr.r);else if(window.fetch)fetch('https://api.github.com/repos/'+REPO+'/releases/latest',{headers:{Accept:'application/vnd.github+json'}}).then(function(x){return x.ok?x.json():Promise.reject()}).then(function(r){if(r&&r.tag_name){try{sessionStorage.setItem(KEY,JSON.stringify({t:Date.now(),r:r}))}catch(e){}apply(r)}}).catch(function(){});
 var bar=document.createElement('div');bar.className='prog';body.appendChild(bar);
 function spy(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;bar.style.width=(max>0?h.scrollTop/max*100:0)+'%';
 var cur=null;$$('main h2[id]').forEach(function(x){if(x.offsetParent!==null&&x.getBoundingClientRect().top<140)cur=x.id});
@@ -159,9 +181,9 @@ def hero(preview):
     d = "#download" if preview else "download.html"
     i = "#installation" if preview else "installation.html"
     return ('<div class="hero"><img src="%s" alt="FireClient app icon" width="104" height="104"><div>'
-            '<h1>FireClient documentation</h1><p>Minecraft, Your Way. Install, set up and get the most out of the FireClient launcher and in-game client.</p>'
+            '<h1>FireClient (Fire Client) docs and download</h1><p>Minecraft, Your Way. Download, install and set up the free FireClient launcher and in-game client.</p><div class="chips"><span>Free</span><span>Windows, macOS, Linux</span><span>Fabric, Forge, NeoForge</span></div>'
             '<a class="btn" href="%s">Download %s</a><a class="btn ghost" href="%s">Install guide</a><a class="btn ghost" href="%s">GitHub</a></div></div>'
-            ) % (asset("icon-256.png", preview), d, LATEST, i, GH)
+            ) % (asset("icon-256.png", preview), d, '<span data-latest>' + LATEST + '</span>', i, GH)
 
 
 def article(p, i, preview):
@@ -186,14 +208,14 @@ def jsonld(p):
     crumbs = [("FireClient", "https://www.fireclient.net/"), ("Docs", BASE + "/")]
     if p["slug"] != "index":
         crumbs.append((p["title"], u))
-    app = {"@type": "SoftwareApplication", "name": "FireClient", "alternateName": "Fire Client",
+    app = {"@type": "SoftwareApplication", "name": "FireClient", "alternateName": ["Fire Client", "FireClient launcher", "FireClient Minecraft"],
            "applicationCategory": "GameApplication", "operatingSystem": "Windows 10, Windows 11, macOS, Linux",
            "softwareVersion": LATEST.lstrip("v"), "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
-    if p["slug"] == "download":
-        app["downloadUrl"] = REL + "/latest"
+    app["downloadUrl"] = REL + "/latest"
+    app["installUrl"] = BASE + "/installation.html"
     g = [
         {"@type": "TechArticle", "headline": p["title"], "description": p["description"], "url": u,
-         "inLanguage": "en", "dateModified": TODAY, "mainEntityOfPage": u,
+         "inLanguage": "en", "keywords": KW, "dateModified": TODAY, "mainEntityOfPage": u,
          "image": OG,
          "author": [{"@type": "Person", "name": "FirePDX"}, {"@type": "Person", "name": "Sajjad Ahmed"}],
          "publisher": {"@type": "Organization", "name": "FireClient", "url": "https://www.fireclient.net/",
@@ -212,14 +234,18 @@ def jsonld(p):
 
 
 def head(p):
-    t = "FireClient Docs: Install, Download, HUD, Mods and Help" if p["slug"] == "index" else p["title"] + " | " + SITE
+    t = p.get("seo_title") or p["title"] + " | " + SITE
     d = html.escape(p["description"], quote=True)
     u = url_of(p)
     te = html.escape(t, quote=True)
+    kw = html.escape(", ".join(filter(None, [p.get("keywords"), KW])), quote=True)
     return f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{html.escape(t)}</title>
 <meta name="description" content="{d}">
+<meta name="keywords" content="{kw}">
+<meta name="application-name" content="FireClient">
+<meta property="og:image:alt" content="FireClient (Fire Client) download and docs">
 <link rel="canonical" href="{u}">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="FirePDX, Sajjad Ahmed">
@@ -241,6 +267,7 @@ def head(p):
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://api.github.com">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">{jsonld(p)}</script>"""
 
@@ -253,7 +280,7 @@ def header(preview):
             '<div class="hl"><a href="%s">Download</a><a href="%s">Release notes</a><a href="%s">GitHub</a></div>'
             '<a class="pill" href="%s">%s</a>'
             '<input id="q" type="search" placeholder="Search docs  (press /)" aria-label="Search docs"><button id="theme" aria-label="Toggle theme">◐</button></header>'
-            ) % (home, asset("logo-mark.png", preview), dl, rel, GH, rel, LATEST)
+            ) % (home, asset("logo-mark.png", preview), dl, rel, GH, rel, '<span data-latest>' + LATEST + '</span>')
 
 
 FOOT = ('<footer>FireClient is not affiliated with Mojang or Microsoft. · <a href="https://www.fireclient.net/">fireclient.net</a> · '

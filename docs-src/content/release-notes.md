@@ -3,8 +3,10 @@ title: Release notes
 description: FireClient release notes and version history from v1.0.0 to v1.0.10, with dates and the highlights of FireClient 1.1.
 group: Reference
 order: 21
+seo_title: "FireClient Release Notes and Latest Version: v1.0.10 and Older"
+keywords: "FireClient latest version, FireClient changelog, FireClient release notes, FireClient update"
 ---
-The latest release is **v1.0.10** (26 October 2026).
+The latest release is **<span data-latest>v1.0.10</span>** (<span data-latest-date>26 October 2026</span>).
 
 ## FireClient 1.1
 
@@ -23,7 +25,7 @@ The 1.0 beta was announced on the [news page](https://www.fireclient.net/news/fi
 
 | Version | Date |
 |---|---|
-| v1.0.10 (latest) | 26 Oct 2026 |
+| v1.0.10 (latest, see above for live version) | 26 Oct 2026 |
 | v1.0.9 | 22 Oct 2026 |
 | v1.0.8 | 21 Oct 2026 |
 | v1.0.7 | 20 Oct 2026 |

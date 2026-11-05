@@ -1,10 +1,14 @@
 ---
 title: Download FireClient
-description: Download the latest FireClient release for Windows, macOS and Linux. Version v1.0.10, file names, install scripts and checksum notes.
+description: "Download FireClient (Fire Client) free for Windows, macOS and Linux. Latest version v1.0.10 with the real release date, file list, SHA-256 hashes and install help."
 group: Get started
 order: 2
+seo_title: "Download FireClient (Fire Client) for Windows, macOS and Linux"
+keywords: "download FireClient, FireClient download free, FireClient setup exe, FireClient latest version, FireClient release, FireClient windows download, Fire Client download"
 ---
-The current release is **v1.0.10**, published on 26 October 2026. Official builds are published on the [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases) page.
+The latest release is **<span data-latest>v1.0.10</span>**, published on <span data-latest-date>26 October 2026</span>. Official builds are published on the [Verified FireClient Releases](https://github.com/untitledinfo/verifed-fireclient/releases) page.
+
+<div id="rel" class="rel"><div class="rel-top"><span class="rel-tag"><span data-latest>v1.0.10</span></span><span>Released <span data-latest-date>26 October 2026</span></span><a href="https://github.com/untitledinfo/verifed-fireclient/releases/latest">View the latest release</a></div></div>
 
 ## Files
 
